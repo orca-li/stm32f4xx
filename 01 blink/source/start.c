@@ -20,7 +20,7 @@ uint32_t isr_vector[ISR_VECTOR_SIZE] __attribute__((section(".isr_vector"))) = {
 };
 
 void reset_handler(void){
-    size_t size_data = (uint32_t)&_edata - (uint32_t)&_sdata;
+    uint32_t size_data = (uint32_t)&_edata - (uint32_t)&_sdata;
     uint8_t *flash_data = (uint8_t*)&_etext;
     uint8_t *sram_data = (uint8_t*)&_sdata;
 
@@ -30,7 +30,7 @@ void reset_handler(void){
     uint32_t size_bss = (uint32_t)&_ebss - (uint32_t)&_sbss;
     uint8_t *bss = (uint8_t*)&_sbss;
 
-    for(size_t i = 0; i < size_bss; i++)
+    for(uint32_t i = 0; i < size_bss; i++)
         bss[i] = 0;
 
     main();
