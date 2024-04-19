@@ -69,6 +69,8 @@ cp stm32flash.exe C:\msys64\usr\bin
     4. Перенести все папки из архива в эту папку: `bin`, `arm-none-eabi`, `lib`, `share`
 ```bash
 mkdir C:\msys64\usr\bin\path-arm-gcc
+echo %Path% # результат сохраняем в блокнот для того, чтобы потом можно было восстановить в случае краха
+setx /M Path "[то что в блокноте]; C:\msys64\usr\bin\path-arm-gcc\bin"
 ```
 Для того чтобы избавиться от этой утилиты, достаточно будет удалить папку
 </details>
