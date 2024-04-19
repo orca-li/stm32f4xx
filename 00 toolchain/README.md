@@ -85,7 +85,7 @@ make --version
 gcc --version
 arm-none-eabi-gcc --version
 arm-none-eabi-objcopy --version
-stm32flash --versiob
+stm32flash --version
 code --version # необязательно, но если ставили vs code, то там могла стоять галочка создать переменную path. Если вы ее оставили, то утилита сработает
 ```
 Если всё установлено правильно, каждая команда покажет свою версию
