@@ -1,12 +1,10 @@
-#include "./include/main.h"
+#include "./include/morse.h"
+#include "./include/time.h"
 
 int main(void){
-    *RCC_AHB1ENR |= (1 << RCC_AHB1ENR_GPIOC);
-    *GPIOC_MODER |= (1 << GPIOC_GPOM_13);
-    
     while(1){
-        *GPIOC_ODR ^= (1 << GPIOC_PIN13);
-        for (uint32_t i = 0; i < 1000000; i++);
+        play_morse("hello world");
+        sec_delay_t(1);
     }
 
     return 0;

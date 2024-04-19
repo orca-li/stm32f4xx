@@ -1,3 +1,6 @@
+#ifndef INIT_H
+#define INIT_H
+
 #include <stdint.h>
 
 #define BASE_PERIPHERAL         (0x40000000U)
@@ -17,3 +20,5 @@
 #define GPIOC_ODR               ((volatile uint32_t*) (BASE_GPIOC + GPIOx_ODR_OFFSET))
 
 #define GPIOC_PIN13             (13)
+
+#endif /* INIT_H */
