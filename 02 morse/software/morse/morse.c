@@ -1,8 +1,6 @@
-#include "../include/morse.h"
-#include "../include/blink.h"
-#include "../include/ctype.h"
+#include "morse.h"
 
-const alpha_mt morse_alphabet[] = {
+const letter_mt morse_alphabet[] = {
     '0', '1', '2', '3', '4',
     '5', '6', '7', '8', '9',
 
@@ -25,7 +23,7 @@ const alpha_mt morse_alphabet[] = {
     begin, end, error, wait,
 };
 
-const letter_mt morse_code[] = {
+const letter_code_mt morse_code[] = {
     "*----", "**---", "***--", "****-", "*****",
     "-****", "--***", "---**", "----*", "-----",
 
@@ -48,38 +46,41 @@ const letter_mt morse_code[] = {
     "-*-*-", "***-*-", "********", "*-***",
 };
 
-alpha_mt filter_letter(const alpha_mt letter){
-    if(islower_c(letter))
-        return letter - OFFSET_UPPER_ASCII;
+letter_mt filter_letter(const letter_mt letter){
+    if(ISLOWER(letter))
+        return letter - OFFSET(UPPER_ASCII);
     
     return letter;
 }
 
-letter_mt get_morse_letter(const alpha_mt letter){
-    for(index_mt i = 0; i < (index_mt)(sizeof(morse_alphabet) / sizeof(morse_alphabet[0])); i++)
+letter_code_mt get_morse_letter(const letter_mt letter){
+    for(index_mt i = 0; i < (index_mt)GETSIZE(morse_alphabet); i++)
         if(letter == morse_alphabet[i])
             return morse_code[i];
 
     return " * ";
 }
 
-void play_letter(letter_mt letter){
+void play_letter(letter_code_mt letter){
     while(*letter){
         switch(*letter){
             case '*':
-                blink(0, MODE_BLINK, 250);
+                blink(MODE_DOT);
                 break;
             case '-':
-                blink(0, MODE_BLINK, 750);
+                blink(MODE_DASH);
+                break;
+            case ' ':
+                ms_delay_cf(STEP_WORD_MS);
                 break;
             default:
-                ms_delay_t(250);
+                ms_delay_cf(STEP_ERROR_MS);
                 break;
         }
-        ms_delay_t(250);
+        ms_delay_cf(STEP_MORSE_MS);
         letter++;
     }
-    ms_delay_t(1750);
+    ms_delay_cf(STEP_NETX_LETTER_MS);
 }
 
 void play_morse(text_mt message){
