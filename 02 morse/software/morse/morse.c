@@ -48,7 +48,7 @@ const letter_code_mt morse_code[] = {
 
 letter_mt filter_letter(const letter_mt letter){
     if(ISLOWER(letter))
-        return letter - OFFSET(UPPER_ASCII);
+        return letter + OFFSET(UPPER_ASCII);
     
     return letter;
 }
@@ -71,6 +71,7 @@ void play_letter(letter_code_mt letter){
                 blink(MODE_DASH);
                 break;
             case ' ':
+                blink(MODE_BIT_RESET);
                 ms_delay_cf(STEP_WORD_MS);
                 break;
             default:

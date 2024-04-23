@@ -6,6 +6,8 @@ void main(void){
     init_gpio();
     
     while(1){
-        play_morse("a1b2 c3d4 e5f6");
+        play_morse("  ");
+        play_morse("hello world");
+        play_morse(" ");
     }
 }
