@@ -1,0 +1,3 @@
+[submodule "submodules/BMSIS"]
+	path = submodules/BMSIS
+	url = https://github.com/orca-li/BMSIS

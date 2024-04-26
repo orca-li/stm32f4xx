@@ -1,4 +1,4 @@
-#include "../../driver/gpio/gpio.h"
+#include "../../submodules/BMSIS/gpio.h"
 #include "../../driver/clock/clock.h"
 #include "../morse/morse.h"
 #include "blink.h"
@@ -6,15 +6,15 @@
 void blink(mode_bt mode){
     switch(mode){
         case MODE_BIT_SET:
-            *GPIOC_ODR &= (MODE_BIT_SET << GPIOC_PIN13);
+            *GPIOC_ODR &= GPIOx_ODR13_RESET_Msk;
             break;
 
         case MODE_BIT_RESET:
-            *GPIOC_ODR |= (MODE_BIT_RESET << GPIOC_PIN13);
+            *GPIOC_ODR |= GPIOx_ODR13_SET_Msk;
             break;
 
         case MODE_BLINK:
-            *GPIOC_ODR ^= (1 << GPIOC_PIN13);
+            *GPIOC_ODR ^= GPIOx_ODR13_SET_Msk;
             ms_delay_cf(250);
             break;
 

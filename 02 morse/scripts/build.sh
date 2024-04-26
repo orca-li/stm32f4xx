@@ -3,7 +3,7 @@ cc=arm-none-eabi-gcc
 cf="-mcpu=cortex-m4 -mthumb -nostdlib"
 
 src_software="software/blink/blink.c software/morse/morse.c"
-src_driver="driver/gpio/gpio.c driver/clock/clock.c"
+src_driver="driver/clock/clock.c"
 src_core="core/startup.c"
 src="main.c ${src_core} ${src_driver} ${src_software}"
 
