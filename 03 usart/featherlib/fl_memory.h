@@ -1,0 +1,23 @@
+#ifndef FEATHERLIB_INC_MEMORYMAP_H
+#define FEATHERLIB_INC_MEMORYMAP_H
+
+/* Memory map for all busses */
+#define FLASH_BASE  (0x08000000u)
+#define PERIPH_BASE (0x40000000u)
+#define PERIPH_BASE_APB1 (PERIPH_BASE + 0x00000)
+#define PERIPH_BASE_APB2 (PERIPH_BASE + 0x10000)
+#define PERIPH_BASE_AHB1 (PERIPH_BASE + 0x20000)
+
+/* Register boundary addresses */
+
+/* APB1 */
+#define USART2_BASE (PERIPH_BASE_APB1 + 0x4400)
+
+/* APB2 */
+#define USART1_BASE (PERIPH_BASE_APB2 + 0x1000)
+#define USART6_BASE (PERIPH_BASE_APB2 + 0x1400)
+
+/* AHB1 */
+#define RCC_BASE (PERIPH_BASE_AHB1 + 0x23800)
+
+#endif /* FEATHERLIB_INC_MEMORYMAP_H */
