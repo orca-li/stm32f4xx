@@ -20,4 +20,17 @@
 /* AHB1 */
 #define RCC_BASE (PERIPH_BASE_AHB1 + 0x23800)
 
+/* --- ARM Cortex-M0, M3 and M4 specific definitions ----------------------- */
+/* Private peripheral bus - Internal */
+/* PM0214 2.2 Memory model - Figure 8. Memory map */
+#define PPBI_BASE (0xE0000000u) 
+
+/* Core peripheral register regions */
+/* PM0214 4.1 - Table 37. STM32 core peripheral register regions */
+#define CPR_BASE (PPBI_BASE + 0xE000u) 
+
+/* NVIC: Nested Vector Interrupt Controller */
+/* PM0214 4.1 - Table 37. STM32 core peripheral register regions */
+#define NVIC_BASE (CPR_BASE + 0x0100u) 
+
 #endif /* FEATHERLIB_INC_MEMORYMAP_H */
