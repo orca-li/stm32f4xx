@@ -1,9 +1,15 @@
 #include "uart.h"
 
+#include <stdbool.h>
+
 #include "../../featherlib/fl_uart.h"
 #include "../../featherlib/fl_nvic.h"
 
 static void u_transmit_byte(uint8_t data);
+
+void usart2_isr (void) {
+    const bool overrun_occurred = usart_get_flag(USART2, USART_FLAG_ORE);
+}
 
 void init_uart(void) {
     rcc_periph_clock_enable(RCC_USART2);
@@ -30,3 +36,4 @@ void u_transmit (uint8_t *data, const uint32_t length) {
 static void u_transmit_byte (uint8_t data) {
     usart_send_blocking(USART2, (uint16_t)data);
 }
+

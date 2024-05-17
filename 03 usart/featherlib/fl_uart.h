@@ -22,7 +22,7 @@
 
 /* --- USART_DR values ----------------------------------------------------- */
 /* USART_DR[8:0]: DR[8:0]: Data value */
-#define USART_DR_MASK                   0x1FF
+#define USART_DR_MASK           (0x1FF)
 
 /* --- USART_CR1 values ---------------------------------------------------- */
 /* UE: USART enable */
