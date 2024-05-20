@@ -1,8 +1,6 @@
 #include <stdio.h>
 #include <stdint.h>
 
-#include "system.h"
-
 #define SRAM_START                      (0x20000000U)
 #define SRAM_SIZE_KB                    (64U)
 #define SRAM_SIZE_BYTE                  (SRAM_SIZE_KB * 1024U)

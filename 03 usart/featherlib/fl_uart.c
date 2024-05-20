@@ -1,3 +1,5 @@
+#include <stdbool.h>
+
 #include "fl_uart.h"
 
 void usart_set_databits (uint32_t usart, uint32_t bits) {
@@ -47,6 +49,15 @@ void usart_wait_send_ready(uint32_t usart) {
     while (0 == ((USART_SR_TXE & USART_SR(usart))));
 }
 
-void usart_send(usart, data) {
+void usart_send (uint32_t usart, uint16_t data) {
     USART_DR(usart) = (data & USART_DR_MASK);
+}
+
+bool usart_get_flag(uint32_t usart, uint32_t flag) {
+	return ((USART_SR(usart) & flag) != 0);
+}
+
+uint16_t usart_recv(uint32_t usart) {
+	/* Receive data. */
+	return USART_DR(usart) & USART_DR_MASK;
 }
