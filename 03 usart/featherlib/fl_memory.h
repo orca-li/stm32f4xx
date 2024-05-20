@@ -18,6 +18,10 @@
 #define USART6_BASE (PERIPH_BASE_APB2 + 0x1400)
 
 /* AHB1 */
+/* DS9716 5 Memory mapping - table 10. STM32F401xB/STM32F401xC register boundary addresses */
+#define GPIO_PORT_A_BASE (PERIPH_BASE_AHB1 + 0x0000)
+#define GPIO_PORT_B_BASE (PERIPH_BASE_AHB1 + 0x0400)
+#define GPIO_PORT_C_BASE (PERIPH_BASE_AHB1 + 0x0800)
 #define RCC_BASE (PERIPH_BASE_AHB1 + 0x23800)
 
 /* --- ARM Cortex-M0, M3 and M4 specific definitions ----------------------- */
