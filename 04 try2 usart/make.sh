@@ -3,14 +3,18 @@ source scripts/config.sh
 
 # options
 option=$1
+comport=$2
 
 # scripts
 export shdir="scripts"
-getobj="${shdir}/getobj.sh"
-linker="${shdir}/linker.sh"
-debug="${shdir}/debug.sh"
-mkdir="${shdir}/mkdir.sh"
-clean="${shdir}/clean.sh"
+# all
+mkdir="${shdir}/mkdir.sh"   # создание каталогов
+getobj="${shdir}/getobj.sh" # создание объектов
+linker="${shdir}/linker.sh" # линковка объектов
+debug="${shdir}/debug.sh"   # снятие дампов
+# other
+clean="${shdir}/clean.sh"   # удаление каталога сборки
+flash="${shdir}/flash.sh"   # прошивка через usart
 
 case $option in
     "") # all
@@ -34,6 +38,10 @@ case $option in
 
     "dirs")
         bash $mkdir
+        ;;
+
+    "flash")
+        bash $flash $comport
         ;;
 
     "clean")
