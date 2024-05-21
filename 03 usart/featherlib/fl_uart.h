@@ -12,10 +12,14 @@
 #define USART_SR(usart_base)    MMIO32((usart_base) + 0x00)
 /* RM0368 19.6.2 Data register (USART_DR) */
 #define USART_DR(usart_base)    MMIO32((usart_base) + 0x04)
+/* RM0368 19.6.3 Baud rate register (USARTx_BRR) */
+#define USART_BRR(usart_base)	MMIO32((usart_base) + 0x08)
 /* RM0368 19.6.4 Control register 1 (USART_CR1) */
 #define USART_CR1(usart_base)   MMIO32((usart_base) + 0x0C)
 /* RM0368 19.6.5 Control register 2 (USART_CR2) */
 #define USART_CR2(usart_base)   MMIO32((usart_base) + 0x10)
+
+
 
 /* --- USART_SR values ----------------------------------------------------- */
 /* CTS:  */

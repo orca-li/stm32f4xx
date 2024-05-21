@@ -12,6 +12,7 @@ void usart_set_databits (uint32_t usart, uint32_t bits) {
 
 void usart_set_baudrate (uint32_t usart, uint32_t baud) {
     uint32_t clock = rcc_get_usart_clk_freq(usart);
+    USART_BRR(usart) = (clock + baud / 2) / baud;
 }
 
 void usart_set_parity (uint32_t usart, uint32_t parity) {
