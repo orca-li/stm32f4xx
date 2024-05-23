@@ -35,9 +35,13 @@
 #define CR_STOP_HALF    (1u)
 #define CR_STOP_TWO     (2u)
 #define CR_STOP_1HALF   (3u)
+#define USART_CR2_STOP_ONE  (3u << 12) /* &= */
 #define USART_CR2_STOP(value) (value << 12) /* Bit 13:12 STOP: Stop bits */
 
 /* RM0368 19.6.6 Control register 3 (USART_CR3) */
 #define USART_CR3(usart) MMIO32(usart + 0x14u)
+/* values */
+#define USART_CR3_CTSE  (1 << 9)    /* Bit 9 CTSE: CTS enable */
+#define USART_CR3_RTSE  (1 << 8)    /* Bit 8 RTSE: RTS enable */
 
 #endif /* STM32F4XX_INC_USART_H */
