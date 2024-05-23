@@ -18,7 +18,7 @@
 #define USART_BRR(usart) MMIO32(usart + 0x08u)
 
 /* RM0368 19.6.4 Control register 1 (USART_CR1) */
-#define USART_CR1(usart) MMIO32(usart + 0x12u)
+#define USART_CR1(usart) MMIO32(usart + 0x0Cu)
 /* values */
 #define USART_CR1_UE        (1 << 13)   /* Bit 13 UE: Usart enable */
 #define USART_CR1_M         (1 << 12)   /* Bit 12 M: Word length */
