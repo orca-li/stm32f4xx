@@ -11,11 +11,16 @@
 #define AHB1_BASE (PERIPHERALS_BASE + 0x20000u)
 
 /* RM0368 5 Memory mapping - Table 10. STM32F401xB/STM32F401xC register boundary addresses */
+/* AHB1 */
 #define GPIOA_BASE  (AHB1_BASE + 0x0000u)
 #define GPIOB_BASE  (AHB1_BASE + 0x0400u)
 #define GPIOC_BASE  (AHB1_BASE + 0x0800u)
 /* ... */
 #define RCC_BASE    (AHB1_BASE + 0x3800u)
+/* APB1 */
+/* ... */
+#define USART2_BASE (APB1_BASE + 0x4400u)
+/* Reserved */
 
 
 
