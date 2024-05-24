@@ -6,6 +6,8 @@ MEMORY
 	SRAM (rwx): ORIGIN = 0x20000000, LENGTH = 64K
 }
 
+_min_heap_size_ = 0x800 ; /* required amount of heap */
+
 SECTIONS
 {
   .isr_vector :
@@ -59,4 +61,13 @@ SECTIONS
     _ebss = .;
     __bss_end__ = _ebss;
   } >SRAM
+
+  .user_heap :
+  {
+    . = ALIGN(8);
+    PROVIDE (end = .);
+    PROVIDE (_end = .);
+    . = . + _min_heap_size_;
+    . = ALIGN(8);
+  } >RAM
 }

@@ -17,7 +17,9 @@ ccstr="${typecc}strings"
 relf="${typecc}readelf"
 
 # flags
-cf="-mcpu=cortex-m4 -mthumb -nostdlib"
+# cf="-mcpu=cortex-m4 -mthumb -nostdlib"
+# cf="-mcpu=cortex-m4 -mthumb --specs=nosys.specs"
+cf="-mcpu=cortex-m4 -std=gnu11 -g3"
 erf="-Wall -Werror -Wextra"
 ldf="-T"
 
@@ -38,6 +40,7 @@ source=()
 source+=(core/*.c)
 source+=(driver/*.c)
 source+=(fusecore/*.c)
+source+=(software/*.c)
 source=(${source[@]%.*}) # % - оператор удаления суффикса
 
 # include

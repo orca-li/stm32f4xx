@@ -15,9 +15,9 @@
 #define USART_CR3(usart) MMIO32(usart + 0x14u)
 
 /* RM0368 19.6.1 Status register (USART_SR) */
-#define USART_SR_TXE (1 << 7) /* Bit 7 TXE: Transmit data register empty */
-#define USART_SR_TC  (1 << 6) /* Bit 6 TC: Transmission complete */
-
+#define USART_SR_TXE (1 << 7)  /* Bit 7 TXE: Transmit data register empty */
+#define USART_SR_TC  (1 << 6)  /* Bit 6 TC: Transmission complete */
+#define USART_SR_RXNE (1 << 5) /* Bit 5 RXNE: Read data register not empty */
 /* RM0368 19.6.2 Data register (USART_DR) */
 
 /* RM0368 19.6.3 Baud rate register (USART_BRR) */
