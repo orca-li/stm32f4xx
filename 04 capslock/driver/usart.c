@@ -1,7 +1,7 @@
 #include "usart.h"
 
-static void usart_send_byte (dt_usart usart, const char data);
-static uint32_t usart_get_byte (dt_usart usart);
+static void usart_send_byte(dt_usart usart, const char data);
+static uint32_t usart_get_byte(dt_usart usart);
 
 void usart_enable (dt_usart usart) {
     USART_CR1(usart) |= USART_CR1_UE;

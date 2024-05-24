@@ -1,7 +1,7 @@
 #!/bin/bash
 # project name
-repository="04 interview"
-pname=interview
+repository="04 capslock"
+pname=capslock
 
 # linker
 lnkscr="core/linker_script.ld"
