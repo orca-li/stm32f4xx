@@ -37,6 +37,7 @@ dirs+=("$dbgdir")
 source=()
 source+=(core/*.c)
 source+=(driver/*.c)
+source+=(fusecore/*.c)
 source=(${source[@]%.*}) # % - оператор удаления суффикса
 
 # include

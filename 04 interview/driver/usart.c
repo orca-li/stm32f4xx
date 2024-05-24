@@ -11,7 +11,7 @@ void usart_set_mode (dt_usart usart, dt_usart mode) {
 }
 
 void usart_set_baudrate (dt_usart usart, dt_usart baud) {
-    USART_BRR(usart) = baud;
+    USART_BRR(usart) = (uint32_t)(cpu_freq / (16 * baud)) << 4;
 }
 
 void usart_transmit (dt_usart usart, dt_usart length, char *data) {
