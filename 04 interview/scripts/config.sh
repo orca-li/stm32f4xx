@@ -1,6 +1,7 @@
 #!/bin/bash
 # project name
-pname=usart
+repository="04 interview"
+pname=interview
 
 # linker
 lnkscr="core/linker_script.ld"
@@ -25,16 +26,22 @@ outdir=build
 bindir="${outdir}/binary"
 objdir="${outdir}/objects"
 dbgdir="${outdir}/debug"
-dirs=("$outdir" "$bindir" "$objdir" "$dbgdir")
+
+dirs=()
+dirs+=("$outdir")
+dirs+=("$bindir")
+dirs+=("$objdir")
+dirs+=("$dbgdir")
 
 # source
 source=()
 source+=(core/*.c)
+source+=(driver/*.c)
 source=(${source[@]%.*}) # % - оператор удаления суффикса
 
 # include
 include=()
-include+=("-I\"../04 interview\"")
+include+=("-I\"../$repository\"")
 
 # functions
 todo() {
