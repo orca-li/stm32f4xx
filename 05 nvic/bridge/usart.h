@@ -28,12 +28,13 @@
  */
 
 /* RM0368 19.6.4 Control register 1 (USART_CR1) */
-#define USART_CR1_UE  (1 << 13) /* Bit 13 UE: Usart enable */
-#define USART_CR1_M   (1 << 12) /* Bit 12 M: Word length */
-#define USART_CR1_PCE (1 << 10) /* Bit 10 PCE: Parity control enable */
-#define USART_CR1_TE  (1 << 3) /* Bit 3 TE: Transmitter enable */
-#define USART_CR1_RE  (1 << 2) /* Bit 2 RE: Read enable */
-#define USART_CR1_SBK (1 << 0) /* Bit 0 SBK: Send break */
+#define USART_CR1_UE       (1 << 13) /* Bit 13 UE: Usart enable */
+#define USART_CR1_M        (1 << 12) /* Bit 12 M: Word length */
+#define USART_CR1_PCE      (1 << 10) /* Bit 10 PCE: Parity control enable */
+#define USART_CR1_RXNEIE   (1 << 5) /* Bit 5 RXNEIE: RXNE interrupt enable */
+#define USART_CR1_TE       (1 << 3) /* Bit 3 TE: Transmitter enable */
+#define USART_CR1_RE       (1 << 2) /* Bit 2 RE: Read enable */
+#define USART_CR1_SBK      (1 << 0) /* Bit 0 SBK: Send break */
 
 /* RM0368 19.6.5 Control register 2 (USART_CR2) */
 #define USART_CR2_STOP_MASK (3u)

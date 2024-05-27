@@ -7,6 +7,7 @@
 #define BLOCK0_BASE (BLOCKN_SIZE * 0)
 #define BLOCK1_BASE (BLOCKN_SIZE * 1)
 #define BLOCK2_BASE (BLOCKN_SIZE * 2)
+#define BLOCK7_BASE (BLOCKN_SIZE * 7)
 
 #define SRAM_START  (BLOCK1_BASE)
 #define PERIPHERALS_BASE (BLOCK2_BASE)
@@ -28,5 +29,10 @@
 #define RCC_BASE    (AHB1_BASE + 0x3800u)
 /* APB1 */
 #define USART2_BASE (APB1_BASE + 0x4400u)
+
+/* Cortex-M4 Internal peripherals */
+#define CORTEX_M4_BASE (BLOCK7_BASE)
+/* PM0214 4.3 Nested vectored interrupt controller (NVIC) */
+#define NVIC_BASE (CORTEX_M4_BASE + 0xE100)
 
 #endif /* _BRIDGE_MEMORY_H */

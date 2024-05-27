@@ -4,6 +4,7 @@
 #include "driver/rcc.h"
 #include "driver/gpio.h"
 #include "driver/usart.h"
+#include "driver/nvic.h"
 
 void fusecore (void);
 
