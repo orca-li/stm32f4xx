@@ -5,7 +5,7 @@ echo source: $(basename -a ${source[@]})
 
 new_object() {
     local i=$1
-    action="$cc $cf $erf $include -c ${source[i]}.c -o $objdir/$(basename -a ${source[i]}).o"
+    action="$cc ${cf[@]} $erf $include -c ${source[i]}.c -o $objdir/$(basename -a ${source[i]}).o"
     todo
 }
 

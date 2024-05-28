@@ -1,9 +1,9 @@
 #include "usart.h"
 
 static void usart_send_byte(dt_usart usart, const char data);
-static uint32_t usart_get_byte(dt_usart usart);
+static char usart_get_byte(dt_usart usart);
 
-uint8_t usart_buffer[] = " ";
+char usart_buffer[] = " ";
 
 void usart_enable (dt_usart usart)
 {
@@ -53,7 +53,7 @@ void usart_receive (dt_usart usart, const dt_usart limit, char *data)
     }
 }
 
-static uint32_t usart_get_byte (dt_usart usart)
+static char usart_get_byte (dt_usart usart)
 {
     while ((USART_SR(usart) & USART_SR_RXNE) == 0);
     return USART_DR(usart);

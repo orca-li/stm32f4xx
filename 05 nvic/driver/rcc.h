@@ -7,6 +7,7 @@ typedef uint32_t dt_rcc;
 
 #define AHBUS1 0
 #define APBUS1 1
+#define APBUS2 2
 
 extern dt_rcc cpu_freq;
 

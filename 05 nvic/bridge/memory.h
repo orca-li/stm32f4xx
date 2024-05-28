@@ -19,6 +19,7 @@
 #define SP_INIT_ADDRESS (SRAM_END)
 
 #define APB1_BASE (PERIPHERALS_BASE + 0x00000u)
+#define APB2_BASE (PERIPHERALS_BASE + 0x10000u)
 #define AHB1_BASE (PERIPHERALS_BASE + 0x20000u)
 
 /* DS9716 5 Memory mapping - Table 10. STM32F401xB/STM32F401xC register boundary addresses*/
@@ -29,6 +30,8 @@
 #define RCC_BASE    (AHB1_BASE + 0x3800u)
 /* APB1 */
 #define USART2_BASE (APB1_BASE + 0x4400u)
+/* APB2 */
+#define USART1_BASE (APB2_BASE + 0x1000u)
 
 /* Cortex-M4 Internal peripherals */
 #define CORTEX_M4_BASE (BLOCK7_BASE)

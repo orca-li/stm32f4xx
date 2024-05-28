@@ -9,7 +9,7 @@ typedef uint32_t dt_gpio;
 #define AFRHIGH (1)
 
 void gpio_mode_setup (dt_gpio port, dt_gpio pin, dt_gpio mode);
-void gpio_af_setup (dt_gpio port, dt_gpio horl, dt_gpio pin, dt_gpio af);
+void gpio_af_setup (dt_gpio port, dt_gpio pin, dt_gpio af);
 void gpio_toggle_pin (dt_gpio port, dt_gpio pin);
 
 #endif  /* _DRIVER_GPIO_H */

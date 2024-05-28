@@ -6,7 +6,7 @@ echo objects: $(basename -a $objdir/*o)
 
 # main
 # gcc
-action="$cc $cf $objdir/*.o $ldf $lnkscr -o $bindir/$pname.elf"
+action="$cc $cf $objdir/*.o ${ldf[@]} $lnkscr -o $bindir/$pname.elf"
 todo
 
 # objcopy

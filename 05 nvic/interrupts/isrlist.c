@@ -7,7 +7,7 @@ uint32_t isr_vector[] __attribute__((section(".isr_vector"))) = {
     SP_INIT_ADDRESS,
     (uint32_t)&reset_handler,
     0,
-    0,
+    (uint32_t)&hardfault_handler,
     0,
     0,
     0,

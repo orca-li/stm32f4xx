@@ -1,6 +1,6 @@
 #!/bin/bash
 # project name
-repository="05 nvic"
+repository=$(basename "$PWD")
 pname=nvic
 
 # linker
@@ -16,12 +16,25 @@ ar="${typecc}ar"
 ccstr="${typecc}strings"
 relf="${typecc}readelf"
 
-# flags
-# cf="-mcpu=cortex-m4 -mthumb -nostdlib"
-# cf="-mcpu=cortex-m4 -mthumb --specs=nosys.specs"
-cf="-mcpu=cortex-m4 -std=gnu11 -g3"
+# compilation flags
+cf=()
+cf+=("-mcpu=cortex-m4")             # целевой процессор
+cf+=("-std=gnu11")                  # добавляем C11
+# cf+=("-O0")                       # отключение оптимизации
+# cf+=("-v")                        # отладка путей компилятора
+# cf+=("--specs=nosys.specs")       # спецификация nosys.specs
+# cf+=("--specs=nano.specs")        # спецификация nano.specs
+# cf+=("-mfpu=fpv4-sp-d16")         # поддержка fpu
+# cf+=("-mfloat-abi=hard")          # abi для работы с плавающей точкой
+
+# warnings flags
 erf="-Wall -Werror -Wextra"
-ldf="-T"
+
+# linker flags
+ldf=()
+ldf+=("-Wl,--gc-sections")      # удаление не используемых секций
+ldf+=("-Wl,--start-group -lc -lm -Wl,--end-group") # линковка с libc и libm
+ldf+=("-T")
 
 # dirs
 outdir=.build
@@ -38,6 +51,7 @@ dirs+=("$dbgdir")
 # source
 source=()
 source+=(*/*.c)
+source+=(*/*/*.c)
 source=(${source[@]%.*}) # % - оператор удаления суффикса
 
 # include

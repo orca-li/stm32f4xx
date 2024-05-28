@@ -70,4 +70,12 @@ SECTIONS
     . = . + _min_heap_size_;
     . = ALIGN(8);
   } >RAM
+
+  /* Remove information from the compiler libraries */
+  /DISCARD/ :
+  {
+    libc.a ( * )
+    libm.a ( * )
+    libgcc.a ( * )
+  }
 }

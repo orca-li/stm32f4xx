@@ -5,7 +5,7 @@ set -e
 path="$bindir/$pname.elf > $dbgdir/$pname"
 
 #objdump
-action="$odump -d $path.msa" # ассемблерный код для всех секций
+action="$odump -d $path.S" # ассемблерный код для всех секций
 todo
 action="$odump -h $path.ods" # вывод информации о всех секциях
 todo
