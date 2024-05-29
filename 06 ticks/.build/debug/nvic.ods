@@ -1,0 +1,37 @@
+
+.build/binary/nvic.elf:     file format elf32-littlearm
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .isr_vector   000000dc  08000000  08000000  00010000  2**2
+                  CONTENTS, ALLOC, LOAD, DATA
+  1 .text         00001e4c  080000e0  080000e0  000100e0  2**4
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  2 .data         00000078  20000000  08001f2c  00020000  2**2
+                  CONTENTS, ALLOC, LOAD, DATA
+  3 .bss          00000178  20000078  08001fa4  00020078  2**2
+                  ALLOC
+  4 .user_heap    00000800  00000000  00000000  00010000  2**0
+                  ALLOC
+  5 .ARM.attributes 0000002a  00000000  00000000  00020078  2**0
+                  CONTENTS, READONLY
+  6 .comment      0000004c  00000000  00000000  000200a2  2**0
+                  CONTENTS, READONLY
+  7 .debug_line   00004daf  00000000  00000000  000200ee  2**0
+                  CONTENTS, READONLY, DEBUGGING, OCTETS
+  8 .debug_line_str 000001f1  00000000  00000000  00024e9d  2**0
+                  CONTENTS, READONLY, DEBUGGING, OCTETS
+  9 .debug_info   0000ba58  00000000  00000000  0002508e  2**0
+                  CONTENTS, READONLY, DEBUGGING, OCTETS
+ 10 .debug_abbrev 00002d90  00000000  00000000  00030ae6  2**0
+                  CONTENTS, READONLY, DEBUGGING, OCTETS
+ 11 .debug_aranges 00000490  00000000  00000000  00033878  2**3
+                  CONTENTS, READONLY, DEBUGGING, OCTETS
+ 12 .debug_str    00001959  00000000  00000000  00033d08  2**0
+                  CONTENTS, READONLY, DEBUGGING, OCTETS
+ 13 .debug_loclists 00001a27  00000000  00000000  00035661  2**0
+                  CONTENTS, READONLY, DEBUGGING, OCTETS
+ 14 .debug_rnglists 0000036f  00000000  00000000  00037088  2**0
+                  CONTENTS, READONLY, DEBUGGING, OCTETS
+ 15 .debug_frame  00000758  00000000  00000000  000373f8  2**2
+                  CONTENTS, READONLY, DEBUGGING, OCTETS
