@@ -3,6 +3,6 @@
 
 typedef char char_ct;
 
-char_ct capslock(char_ct c);
+void capslock(uint32_t channel);
 
 #endif /* _SOFTWARE_CAPSLOCK_H */

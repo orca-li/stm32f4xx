@@ -23,7 +23,6 @@ cf+=("-std=gnu11")                  # добавляем C11
 # cf+=("-O0")                       # отключение оптимизации
 # cf+=("-v")                        # отладка путей компилятора
 # cf+=("--specs=nosys.specs")       # спецификация nosys.specs
-# cf+=("--specs=nano.specs")        # спецификация nano.specs
 # cf+=("-mfpu=fpv4-sp-d16")         # поддержка fpu
 # cf+=("-mfloat-abi=hard")          # abi для работы с плавающей точкой
 
@@ -32,8 +31,9 @@ erf="-Wall -Werror -Wextra"
 
 # linker flags
 ldf=()
-ldf+=("-Wl,--gc-sections")      # удаление не используемых секций
-ldf+=("-Wl,--start-group -lc -lm -Wl,--end-group") # линковка с libc и libm
+ldf+=("--specs=nano.specs")                         # спецификация nano.specs
+ldf+=("-Wl,--gc-sections")                          # удаление не используемых секций
+ldf+=("-Wl,--start-group -lc -lm -Wl,--end-group")  # линковка с libc и libm
 ldf+=("-T")
 
 # dirs

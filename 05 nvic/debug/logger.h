@@ -7,6 +7,12 @@
 
 typedef char *logstring_t;
 
+typedef struct struct_logger_config {
+    bool tag_channel;
+} logger_config;
+
 void tags_log(uint32_t channel, __attribute__((unused)) logstring_t tag, logstring_t msg);
+
+extern logger_config logcnfg;
 
 #endif /* _DEBUG_LOGGER_H */
