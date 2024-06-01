@@ -32,7 +32,7 @@ erf="-Wall -Werror -Wextra"
 ldf=()
 ldf+=("--specs=nano.specs")                         # спецификация nano.specs
 ldf+=("--specs=nosys.specs")                       # спецификация nosys.specs
-# ldf+=("-Wl,--gc-sections")                        # удаление не используемых секций
+ldf+=("-Wl,--gc-sections")                        # удаление не используемых секций
 # ldf+=("-Wl,--start-group -lc -lm -Wl,--end-group") # линковка с libc и libm
 ldf+=("-T")                                         # файл линкера <- последний
 

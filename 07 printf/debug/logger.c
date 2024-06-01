@@ -11,8 +11,8 @@ static char *get_channel_name(uint32_t channel);
 logger_config logcnfg = {
     .channel_tag = false,
     .channel_out = USART1,
-    .dump_offset = 0,
-    .dump_size = 10,
+    .dump_offset = 20,
+    .dump_size = 20,
 };
 
 void tags_log (uint32_t channel, tagstring_t tag, logstring_t msg)

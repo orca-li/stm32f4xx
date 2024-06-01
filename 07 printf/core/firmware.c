@@ -7,9 +7,6 @@
 #include "fusecore/fusecore.h"
 #include "software/capslock.h"
 
-#undef TAG
-#define TAG "firmware"
-
 int main (void) {
     fusecore();
 

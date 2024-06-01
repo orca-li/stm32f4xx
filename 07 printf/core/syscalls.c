@@ -46,7 +46,6 @@ int _write(int fd, char *ptr, int len)
     if (fd == 1) {
         usart_transmit(USART1, len, ptr);     
     }
-
     return -1;
 }
 

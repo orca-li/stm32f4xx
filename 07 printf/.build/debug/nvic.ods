@@ -5,33 +5,17 @@ Sections:
 Idx Name          Size      VMA       LMA       File off  Algn
   0 .isr_vector   000000dc  08000000  08000000  00010000  2**2
                   CONTENTS, ALLOC, LOAD, DATA
-  1 .text         00002208  080000e0  080000e0  000100e0  2**4
+  1 .text         00001e3c  080000e0  080000e0  000100e0  2**4
                   CONTENTS, ALLOC, LOAD, READONLY, CODE
-  2 .data         00000084  20000000  080022e8  00020000  2**2
+  2 .data         00000084  20000000  08001f1c  00020000  2**2
                   CONTENTS, ALLOC, LOAD, DATA
-  3 .bss          00000174  20000084  0800236c  00020084  2**2
+  3 .bss          00000034  20000084  08001fa0  00020084  2**2
                   ALLOC
   4 .user_heap    00000800  00000000  00000000  00010000  2**0
                   ALLOC
   5 .ARM.attributes 0000002a  00000000  00000000  00020084  2**0
                   CONTENTS, READONLY
-  6 .comment      0000004c  00000000  00000000  000200ae  2**0
+  6 .comment      00000049  00000000  00000000  000200ae  2**0
                   CONTENTS, READONLY
-  7 .debug_line   00005fe5  00000000  00000000  000200fa  2**0
-                  CONTENTS, READONLY, DEBUGGING, OCTETS
-  8 .debug_line_str 000001f1  00000000  00000000  000260df  2**0
-                  CONTENTS, READONLY, DEBUGGING, OCTETS
-  9 .debug_info   0000efa4  00000000  00000000  000262d0  2**0
-                  CONTENTS, READONLY, DEBUGGING, OCTETS
- 10 .debug_abbrev 00003a47  00000000  00000000  00035274  2**0
-                  CONTENTS, READONLY, DEBUGGING, OCTETS
- 11 .debug_aranges 00000568  00000000  00000000  00038cc0  2**3
-                  CONTENTS, READONLY, DEBUGGING, OCTETS
- 12 .debug_str    00001d22  00000000  00000000  00039228  2**0
-                  CONTENTS, READONLY, DEBUGGING, OCTETS
- 13 .debug_loclists 00001ee7  00000000  00000000  0003af4a  2**0
-                  CONTENTS, READONLY, DEBUGGING, OCTETS
- 14 .debug_rnglists 0000043d  00000000  00000000  0003ce31  2**0
-                  CONTENTS, READONLY, DEBUGGING, OCTETS
- 15 .debug_frame  000008b0  00000000  00000000  0003d270  2**2
+  7 .debug_frame  000008b0  00000000  00000000  000200f8  2**2
                   CONTENTS, READONLY, DEBUGGING, OCTETS
