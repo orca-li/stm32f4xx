@@ -10,5 +10,9 @@ typedef struct rtos_thread {
 typedef void (*th_handler)(void);
 
 void th_body(void);
+void th_schedule(void);
+
+extern thread * volatile th_current; 
+extern thread * volatile th_next;
 
 #endif /* _RTOS_THREADS_H */

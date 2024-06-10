@@ -1,4 +1,4 @@
-#!/bin/bash
+# !/bin/bash
 # scripts
 export shdir=".scripts"
 source $shdir/config.sh

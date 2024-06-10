@@ -8,7 +8,7 @@ void _enable_irq (void)
     __enable_irq();
 }
 
-void __disable_irq (void)
+void _disable_irq (void)
 {
     __disable_irq();
 }
@@ -20,5 +20,5 @@ __attribute__((always_inline)) static inline void __enable_irq (void)
 
 __attribute__((always_inline)) static inline void __disable_irq (void)
 {
-    __asm volatile ("cpsie d" : : : "memory");
+    __asm volatile ("cpsid i" : : : "memory");
 }

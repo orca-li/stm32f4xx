@@ -42,5 +42,4 @@
 /* PM0214 4.4 System control block (SCB) - Table 50. Summary of the system control block registers */
 #define SCB_BASE (CORTEX_M4_BASE + 0xED00)
 
-
 #endif /* _BRIDGE_MEMORY_H */

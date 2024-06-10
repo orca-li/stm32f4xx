@@ -3,7 +3,6 @@
 
 /* https://github.com/ARM-software/CMSIS_4/blob/master/CMSIS/Include/cmsis_gcc.h */
 
-
 void _enable_irq(void);
 void _disable_irq(void);
 

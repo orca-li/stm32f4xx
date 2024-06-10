@@ -60,7 +60,7 @@ static void new_thread (thread *me, th_handler handler, void *th_stack, uint32_t
     uint32_t *stack_limit;
 
     *(--sp) = (1 << 24); /* xPSR */
-    *(--sp) = (uint32_t)&handler; /* PC */
+    *(--sp) = (uint32_t)handler; /* PC */
     *(--sp) = 0x0000000Eu; /* LR */
     *(--sp) = 0x0000000Cu; /* R12 */
     *(--sp) = 0x00000003u; /* R3 */
@@ -87,13 +87,16 @@ static void new_thread (thread *me, th_handler handler, void *th_stack, uint32_t
     for (sp = sp - 1u; sp >= stack_limit; --sp) {
         *sp = 0xDEADBEEFu;
     }
-
-
 }
 
 void th_schedule (void)
 {
     /* th_next = ... */
+    if (th_current == &th_loop1) {
+        th_current = &th_loop2;
+    } else if (th_current == &th_loop1) {
+        th_current = &th_loop2;
+    }
 
     if (th_next != th_current) {
         *(uint32_t volatile *)0xE000ED04 = (1u << 28);
