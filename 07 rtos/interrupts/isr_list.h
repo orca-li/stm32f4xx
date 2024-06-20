@@ -2,7 +2,6 @@
 #define _INTERRUPTS_ISRLIST_H
 
 #include "interrupts/irq/irq_list.h"
-#include "interrupts/scb/scb_list.h"
 
 void reset_handler(void);
 

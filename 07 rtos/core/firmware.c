@@ -10,9 +10,9 @@
 int main (void) {
     fusecore();
     rtos();
-    
+    printf("hello world");
     while (true) {
-        printf("hello world\n");
+        gpio_toggle_pin(GPIOC, PIN13);
         delay_ms(1000);
     }
 

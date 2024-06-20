@@ -2,6 +2,7 @@
 
 #include "bridge/memory.h"
 #include "interrupts/isr_list.h"
+#include "interrupts/scb/scb_list.h"
 
 uint32_t isr_vector[] __attribute__((section(".isr_vector"))) = {
     SP_INIT_ADDRESS,
@@ -21,7 +22,7 @@ uint32_t isr_vector[] __attribute__((section(".isr_vector"))) = {
     0,
     (uint32_t)&pendsv_handler,
     (uint32_t)&systick_handler,
-    /* IRQ */
+    /* IRQ - interrupt request */
     0,
     0,
     0,
