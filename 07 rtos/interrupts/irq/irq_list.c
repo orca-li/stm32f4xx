@@ -24,7 +24,7 @@ void hardfault_handler (void)
     char get_address[64];
     tags_log(CHANNEL, TAG, "hardfault_handler");
     for (uint32_t i = 0; i < 54; i++) {
-        snprintf(get_address, 64, "flash -> sram: 0x%lX -> 0x%lX", i*4, isr_vector[i]);
+        snprintf(get_address, 64, "flash -> sram: 0x%08lX -> 0x%8lX", i*4, isr_vector[i]);
         tags_log(CHANNEL, TAG, get_address);
     }
 

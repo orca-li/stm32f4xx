@@ -1,6 +1,9 @@
+#include <stdio.h>
+
 #include "fusecore.h"
 
 #include "debug/logger.h"
+#include "driver/scb.h"
 
 static void gpio_init(void);
 static void usart1_init(void);
@@ -46,6 +49,7 @@ static void nvic_init (void)
     nvic_global_enable();
     nvic_irq_setup(IRQN_USART2);
     nvic_irq_setup(IRQN_USART1);
+    nvic_irq_setup(IRQN_PENDSV);
 }
 
 static void usart1_init (void)

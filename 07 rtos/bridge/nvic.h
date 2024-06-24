@@ -9,6 +9,7 @@
 #define NVIC_ICER(index) MMIO32(NVIC_BASE + 4 * index)
 
 /* RM0368 10.2 External interrupt/event controller (EXTI) - Table 38. Vector table for STM32F401xB/CSTM32F401xD/E */
+#define IRQN_PENDSV (15)
 #define IRQN_USART1 (37)
 #define IRQN_USART2 (38)
 

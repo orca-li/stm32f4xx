@@ -12,5 +12,5 @@ void nvic_irq_setup (irqn_t irqn)
 
 void nvic_global_enable (void)
 {
-    _enable_irq();
+    __enable_irq();
 }

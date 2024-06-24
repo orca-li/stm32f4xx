@@ -22,7 +22,20 @@ void tags_log (uint32_t channel, tagstring_t tag, logstring_t msg)
     }
 }
 
-void dump_sram (uint8_t *addr)
+void dump_sram (void)
+{
+    uint32_t *dump_stack = (uint32_t*)0x2000FFFCu;
+    uint32_t *dump_heap = (uint32_t*)0x20000000u;
+
+    do {
+        printf("stack: %p\tdata: %10lx\t", dump_stack, *dump_stack);
+        printf("heap:%p\tdata: %10lx\n", dump_heap, *dump_heap);
+        dump_stack--; 
+        dump_heap++;
+    } while (dump_heap <= (uint32_t*)0x2000999C); /* SRAM */
+}
+
+void dump_section (uint8_t *addr)
 {
     uint32_t i;
     char buffer[64];
@@ -34,6 +47,14 @@ void dump_sram (uint8_t *addr)
         tags_log(logcnfg.channel_out, "DUMP", buffer);
         dump++;
     }
+}
+
+void dump_CortexM4 (void)
+{
+    uint32_t *dump_cortex = (uint32_t*)0xE0000000u;
+    do {
+        printf("private peripheral bus: %p\tdata: %10lx\n", dump_cortex, *dump_cortex);
+    } while(dump_cortex++ <= (uint32_t*)0xE00FFFFCu);
 }
 
 static void tag_send (uint32_t channel, tagstring_t tag, logstring_t msg)

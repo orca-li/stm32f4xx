@@ -15,8 +15,10 @@ typedef struct struct_logger_config {
     uint32_t dump_size;
 } logger_config;
 
-void dump_sram(uint8_t *addr);
+void dump_sram(void);
 void tags_log(uint32_t channel, tagstring_t tag, logstring_t msg);
+void dump_section(uint8_t *addr);
+void dump_CortexM4(void);
 
 extern logger_config logcnfg;
 

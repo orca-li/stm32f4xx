@@ -1,55 +1,52 @@
+#include <stdint.h>
 #include <stdio.h>
-#include <stdbool.h>
 
-#include "rtos/threads.h"
-#include "driver/systick.h"
-#include "software/thread1.h"
-#include "software/thread2.h"
+#include "threads.h"
+#include "software/red_blink.h"
+#include "software/green_blink.h"
 
-/* pointer to the threads */
-th_tcb * volatile Current_Thread;
-th_tcb * volatile Next_Thread; /* next thread to run */
+OS_Thread * volatile Current_Thread;
+OS_Thread * volatile Next_Thread;
 
-void Thread_Scheduler (void) 
+void OS_Sheduler (void)
 {
-    // printf("sheduler\n");
-    /* Next_Thread = ... */
-    if (Current_Thread == th_body_1.Thread_Control_Block.sp) {
-        printf("swap {if}\n");
-        Current_Thread = th_body_2.Thread_Control_Block.sp;
-    } else if (Current_Thread == th_body_1.Thread_Control_Block.sp) {
-        printf("swap {else}\n");
-        Current_Thread = th_body_2.Thread_Control_Block.sp;
+    printf("Sheduler\n");
+    if (Current_Thread == &Red_Blink.sp) {
+        Next_Thread = &Green_Blink.sp;
+    } else {
+        Next_Thread = &Red_Blink.sp;
     }
 
     if (Next_Thread != Current_Thread) {
-        *(uint32_t volatile *)0xE000ED04 = (1u << 28);
+        /* System handler priority register 3 (SHPR3) */
+        /* PM0214 */
+        /* Set very low priority pendsv */
+        *(uint32_t volatile *)0xE000ED20 = (0xFFu << 16);
+        
     }
 }
 
-void New_Thread (thread *new_thread)
+void OS_Start_Thread (OS_Thread *me, OS_Thread_Handler handler, void *stkSto, uint32_t stkSize)
 {
-    printf("Task Manager:%s launched\n", new_thread->Name);
     const uint32_t align = 8;
-    uint32_t *stack_limit;
-    uint32_t *sp = 
-    (uint32_t*)(
+    uint32_t *stk_limit;
+
+    uint32_t *sp = (uint32_t*)(
         (
             (
-                (uint32_t)new_thread->Thread_Control_Block.sp + new_thread->Stack_Size
+                (uint32_t)stkSto + stkSize
             ) / align
         ) * align
     );
-
-    *(--sp) = (1 << 24); /* xPSR */
-    *(--sp) = (uint32_t)new_thread->Handler; /* PC */
+    *(--sp) = (1u << 24); /* xPSR */
+    *(--sp) = (uint32_t)handler; /* PC */
     *(--sp) = 0x0000000Eu; /* LR */
     *(--sp) = 0x0000000Cu; /* R12 */
     *(--sp) = 0x00000003u; /* R3 */
     *(--sp) = 0x00000002u; /* R2 */
     *(--sp) = 0x00000001u; /* R1 */
     *(--sp) = 0x00000000u; /* R0 */
-    /* additionaly, fake registers R4-R11 */
+    /* additionally, fake registers R4-R11 */
     *(--sp) = 0x0000000Bu; /* R11 */
     *(--sp) = 0x0000000Au; /* R10 */
     *(--sp) = 0x00000009u; /* R9 */
@@ -60,23 +57,21 @@ void New_Thread (thread *new_thread)
     *(--sp) = 0x00000004u; /* R4 */
 
     /* save the top of the stack in the thread's attribute */
-    new_thread->Thread_Control_Block.sp = sp;
+    me->sp = sp;
 
     /* round up the bottom of the stack to the 8-byte boundary */
-    stack_limit = (uint32_t*)(
+    stk_limit = (uint32_t*)(
         (
             (
                 (
-                    (uint32_t)new_thread->Thread_Control_Block.sp - 1u
+                    ((uint32_t)stkSto - 1u)
                 ) / align
             ) + 1u
         ) * align
     );
 
-    /* pre-fill the unused part of the stack with 0xDEADBEEFu */
-    for (sp = sp - 1u; sp >= stack_limit; --sp) {
+    /* pre-fill the unused part of the stack with 0xDEADBEEF */
+    for (sp = sp - 1u; sp >= stk_limit; --sp) {
         *sp = 0xDEADBEEFu;
     }
-
-    printf("Task Manager:%s launched\n", new_thread->Name);
 }

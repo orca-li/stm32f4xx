@@ -1,25 +1,28 @@
 #ifndef _RTOS_THREADS_H
 #define _RTOS_THREADS_H
 
-typedef void (*th_handler)(void);
+#include <stdint.h>
 
 /* Thread Control Block (TCB) */
 typedef struct {
     void *sp; /* stack pointer */
-    /* ... other attributes associated with a thread */
-} th_tcb;
+} OS_Thread;
 
-typedef struct {
-    th_tcb Thread_Control_Block;
-    th_handler Handler;
-    char *Name;
-    uint32_t Stack_Size;
-} thread;
+typedef void (*OS_Thread_Handler)(void);
 
-void Thread_Scheduler(void);
-void New_Thread(thread *new_thread);
+struct body_thread {
+    uint32_t stack[40];
+    OS_Thread sp;
+};
 
-extern th_tcb * volatile Current_Thread; 
-extern th_tcb * volatile Next_Thread;
+void OS_Start_Thread (
+    OS_Thread *me,
+    OS_Thread_Handler handler,
+    void *stkSto, uint32_t stkSize);
+
+void OS_Sheduler(void);
+
+extern OS_Thread * volatile Current_Thread;
+extern OS_Thread * volatile Next_Thread;
 
 #endif /* _RTOS_THREADS_H */

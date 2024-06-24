@@ -1,26 +1,28 @@
 #include <stdio.h>
 
-#include "bridge/scb.h"
-#include "rtos/kernel.h"
-#include "rtos/threads.h"
-#include "software/thread1.h"
-#include "software/thread2.h"
+#include "kernel.h"
+#include "threads.h"
+#include "driver/scb.h"
 
-void task_manager(void);
+#include "software/green_blink.h"
+#include "software/red_blink.h"
 
 void rtos (void)
 {
-    printf("rtos - ok\n");
-    scb_set_priority(PRI_PENDSV, 0xFFu);
-    scb_set_priority(PRI_SYSTICK, 0x00u);
-    printf("scb - ok\n");
+    *(uint32_t volatile *)0xE000ED20 = (0xFFu << 16); /* SHPR3 PendSV */
+    *(uint32_t volatile *)0xE000ED20 = (0x00u << 24); /* SHPR3 SysTick */
 
-    task_manager();
-    printf("task_manager - ok\n");
-}
+    OS_Start_Thread(
+        &Green_Blink.sp,
+        &body_green_blink,
+        Green_Blink.stack, sizeof(Green_Blink.stack)
+    );
 
-void task_manager (void)
-{
-    New_Thread((thread*)&th_body_1);
-    New_Thread((thread*)&th_body_2);
+    OS_Start_Thread(
+        &Red_Blink.sp,
+        &body_red_blink,
+        Red_Blink.stack, sizeof(Red_Blink.stack)
+    );
+
+    scb_set_pendsv();
 }
