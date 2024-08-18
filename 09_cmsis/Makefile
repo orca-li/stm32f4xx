@@ -50,7 +50,7 @@ SOURCES += ${wildcard core/startup/*.c}
 SOURCES += ${wildcard core/*.c}
 SOURCES += ${wildcard CMSIS/Device/ST/STM32F4/Source/Templates/system_stm32f4xx.c}
 
-MACROS += -D"STM32F401xC"
+# MACROS += -D"STM32F401xC"
 
 # --- PATHS AND SYMBOLS CODE END ----------------------------
 

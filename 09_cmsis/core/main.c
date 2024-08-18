@@ -8,10 +8,8 @@ static void gpio_init (void);
 int main (void) {
     gpio_init();
 
-    GPIOA->MODER |= (1 << GPIO_MODER_MODER5_Pos);
-
     while (1) {
-        GPIOA->ODR ^= (1 << LED_PIN);
+        GPIOC->ODR ^= (1 << LED_PIN);
         for (uint32_t i = 0; i < 1000000; i++);
     }
 
@@ -20,6 +18,6 @@ int main (void) {
 
 static void gpio_init (void)
 {
-    RCC->AHB1ENR |= (1 << RCC_AHB1ENR_GPIOAEN_Pos);
-    
+    RCC->AHB1ENR |= (1 << RCC_AHB1ENR_GPIOCEN_Pos);
+    GPIOC->MODER |= (1 << GPIO_MODER_MODER13_Pos);
 }
