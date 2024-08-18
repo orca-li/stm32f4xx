@@ -42,8 +42,7 @@ __attribute__((weak)) int _read(int file __attribute__((unused)), char *ptr __at
 int _write(int fd, char *ptr, int len) 
 {
     if (fd == 1) {
-        (void)len;
-        (void)ptr;
+        usart_transmit(USART1, len, (uint8_t *)ptr);
     }
     return -1;
 }
