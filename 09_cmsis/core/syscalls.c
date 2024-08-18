@@ -1,4 +1,4 @@
-#include <liteMCU.h>
+#include <CMWrap.h>
 #include <stdio.h>
 #include <string.h>
 
@@ -42,7 +42,8 @@ __attribute__((weak)) int _read(int file __attribute__((unused)), char *ptr __at
 int _write(int fd, char *ptr, int len) 
 {
     if (fd == 1) {
-        usart_transmit(USART1, len, (uint8_t*)ptr);     
+        (void)len;
+        (void)ptr;
     }
     return -1;
 }

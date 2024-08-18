@@ -1,0 +1,8 @@
+{
+    "files.associations": {
+        "rcc.h": "c",
+        "cmwrap.h": "c",
+        "systick.h": "c",
+        "stdint.h": "c"
+    }
+}

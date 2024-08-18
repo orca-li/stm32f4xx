@@ -1,4 +1,4 @@
-#include <liteMCU.h>
+#include <CMWrap.h>
 
 extern uint32_t _etext, _sdata, _edata, _sbss, _ebss;
 

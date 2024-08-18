@@ -1,4 +1,4 @@
-#include <liteMCU.h>
+#include <CMWrap.h>
 
 extern volatile uint32_t ticks;
 extern uint32_t isr_vector[54];

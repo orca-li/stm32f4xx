@@ -38,11 +38,13 @@ port :=
 
 # --- PATHS AND SYMBOLS CODE BEGIN --------------------------
 
-include driver/liteMCU/liteMCU.mk
+# include driver/liteMCU/liteMCU.mk
+include driver/CMWrap/CMWrap.mk
 
 LDSCRIPT := core/stm32f401ccu6.ld
 
-INCLUDES += -I"driver/liteMCU"
+INCLUDES += -I"driver/CMWrap"
+# INCLUDES += -I"driver/liteMCU"
 INCLUDES += -I"driver/CMSIS/Device/ST/STM32F4/include"
 INCLUDES += -I"driver/CMSIS/CMSIS/Core/include"
 

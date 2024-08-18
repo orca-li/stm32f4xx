@@ -2,13 +2,8 @@
 #include "include/rcc.h"
 
 volatile uint32_t ticks;
-
+#if 0
 static inline void SysTick_Config (uint32_t ticks);
-
-void systick_init (void)
-{
-    SysTick_Config(cpu_freq / 1000);
-}
 
 static inline void SysTick_Config (uint32_t ticks)
 {
@@ -21,6 +16,14 @@ static inline void SysTick_Config (uint32_t ticks)
     STK_CTRL = CLKSOURCE | TICKINT | COUNTENABLE;
     RCC_APB2ENR |= SYSCFGEN;
 }
+#endif
+#if 0
+void systick_init (void)
+{
+    SysTick_Config(cpu_freq / 1000);
+}
+#endif
+
 
 void delay_ms (uint32_t millieconds)
 {

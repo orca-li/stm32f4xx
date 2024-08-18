@@ -3,6 +3,7 @@
 
 #include "lmcuCONFIG.h"
 
+#if 0
 /* PM0214 4.5.6 SysTick register map - Table 55. SysTick register map and reset values */
 #define STK_CTRL MMIO32(SYSTICK_BASE + 0x00u)
 #define STK_LOAD MMIO32(SYSTICK_BASE + 0x04u)
@@ -13,6 +14,7 @@
 #define COUNTENABLE (1 << 0)
 #define TICKINT     (1 << 1)
 #define CLKSOURCE   (1 << 2)
+#endif
 
 void delay_ms (uint32_t millieconds);
 void systick_init (void);
