@@ -69,7 +69,7 @@ SECTIONS
     PROVIDE (_end = .);
     . = . + _min_heap_size_;
     . = ALIGN(8);
-  } >RAM
+  } >SRAM
 
   /* Remove information from the compiler libraries */
   /DISCARD/ :

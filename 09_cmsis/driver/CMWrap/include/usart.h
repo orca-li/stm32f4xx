@@ -2,7 +2,6 @@
 #define __CMWRAP_USART_H__
 
 #include "configCMW.h"
-#include "stm32f4xx.h"
 #include <stdint.h>
 
 void usart_init_send(USART_TypeDef *usart);

@@ -3,6 +3,7 @@
 void Reset_Handler(void);
 void NMI_Handler(void);
 void Hardfault_Handler(void);
+void PendSV_Handler(void);
 void SysTick_Handler(void);
 void usart1_IRQhandler(void);
 void usart2_IRQhandler(void);
@@ -22,7 +23,7 @@ uint32_t isr_vector[] __attribute__((section(".isr_vector"))) = {
     0,
     0,
     0,
-    0,
+    (uint32_t)&PendSV_Handler,
     (uint32_t)&SysTick_Handler,
     0,
     0,

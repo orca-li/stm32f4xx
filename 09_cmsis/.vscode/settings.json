@@ -3,6 +3,8 @@
         "rcc.h": "c",
         "cmwrap.h": "c",
         "systick.h": "c",
-        "stdint.h": "c"
+        "stdint.h": "c",
+        "rtos.h": "c",
+        "kernel.h": "c"
     }
 }

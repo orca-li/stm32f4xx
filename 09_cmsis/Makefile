@@ -1,5 +1,5 @@
 # --- PROJECT CONFIGURATION CODE BEGIN ----------------------
-PROJECTNAME := refactoring
+PROJECTNAME := rtos
 
 BUILD_DIR := .build
 OBJDIR := ${BUILD_DIR}/objects
@@ -17,8 +17,8 @@ CSIZE := $(PREFIXCC)size
 
 ## flags
 ### flags for CC
-# CFLAGS = -O0
-# CFLAGS = -ggdb
+CFLAGS = -O0
+CFLAGS = -ggdb
 CFLAGS += -Wall
 CFLAGS += -Werror
 CFLAGS += -Wextra
@@ -38,21 +38,26 @@ port :=
 
 # --- PATHS AND SYMBOLS CODE BEGIN --------------------------
 
-# include driver/liteMCU/liteMCU.mk
-include driver/CMWrap/CMWrap.mk
-
 LDSCRIPT := core/stm32f401ccu6.ld
 
-INCLUDES += -I"driver/CMWrap"
 # INCLUDES += -I"driver/liteMCU"
+INCLUDES += -I"driver/CMWrap"
 INCLUDES += -I"driver/CMSIS/Device/ST/STM32F4/include"
 INCLUDES += -I"driver/CMSIS/CMSIS/Core/include"
+INCLUDES += -I"middlewares/rtos"
+# INCLUDES += -I"driver/CMSIS/CMSIS/RTOS/RTX/INC"
+# INCLUDES += -I"driver/CMSIS/CMSIS/RTOS/RTX/SRC"
 
 SOURCES += ${wildcard core/startup/*.c}
 SOURCES += ${wildcard core/*.c}
-SOURCES += ${wildcard CMSIS/Device/ST/STM32F4/Source/Templates/system_stm32f4xx.c}
+# SOURCES += ${wildcard driver/liteMCU/source/*.c}
+SOURCES += ${wildcard driver/CMWrap/source/*.c}
+SOURCES += ${wildcard driver/CMSIS/Device/ST/STM32F4/Source/Templates/system_stm32f4xx.c}
+# SOURCES += ${wildcard driver/CMSIS/CMSIS/RTOS/RTX/SRC/*.c}
+SOURCES += ${wildcard middlewares/rtos/source/*.c}
 
-# MACROS += -D"STM32F401xC"
+# MACROS += -D"__CORTEX_M4"
+# MACROS += -D"__CMSIS_RTOS"
 
 # --- PATHS AND SYMBOLS CODE END ----------------------------
 

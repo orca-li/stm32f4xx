@@ -1,1 +1,0 @@
-SOURCES += ${wildcard driver/liteMCU/source/*.c}

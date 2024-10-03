@@ -1,1 +1,0 @@
-SOURCES += ${wildcard driver/CMWrap/source/*.c}
