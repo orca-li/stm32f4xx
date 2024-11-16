@@ -1,7 +1,7 @@
 # --- PROJECT CONFIGURATION CODE BEGIN ----------------------
-PROJECTNAME := rtos
+PROJECTNAME := i2c
 
-BUILD_DIR := .build
+BUILD_DIR := build
 OBJDIR := ${BUILD_DIR}/objects
 DBGDIR := ${BUILD_DIR}/debug
 BINDIR := ${BUILD_DIR}/binary
