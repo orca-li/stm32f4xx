@@ -7,11 +7,15 @@
 static void gpio_init(void);
 static void usart_init(void);
 static void ipt_init(void);
+static void i2c_master_init(void);
+static void i2c_slave_init(void);
 
 int main(void)
 {
     gpio_init();
     usart_init();
+    i2c_master_init();
+    i2c_slave_init();
     ipt_init();
 
     rtos_init();
@@ -20,7 +24,7 @@ int main(void)
     while (1)
     {
         GPIOC->ODR ^= (1 << LED_PIN);
-        // printf("hello world\r\n");
+        printf("hello world\r\n");
         delay_ms(1000);
     }
 
@@ -41,7 +45,7 @@ static void usart_init(void)
     RCC->AHB1ENR |= (1 << RCC_AHB1ENR_GPIOAEN_Pos);
     RCC->APB2ENR |= (1 << RCC_APB2ENR_USART1EN_Pos);
 
-    GPIOA->MODER &= ~(GPIO_MODER_MODE9_Msk | GPIO_MODER_MODE9_Msk);
+    GPIOA->MODER &= ~(GPIO_MODER_MODE9_Msk | GPIO_MODER_MODE10_Msk);
     GPIOA->MODER |= (0b10 << GPIO_MODER_MODE9_Pos) | (0b10 << GPIO_MODER_MODE10_Pos);
 
     GPIOA->AFR[1] &= ~(GPIO_AFRH_AFSEL9 | GPIO_AFRH_AFSEL10);
@@ -54,6 +58,23 @@ static void usart_init(void)
     NVIC_SetPriority(USART1_IRQn, 0);
 
     usart_init_send(USART1);
+}
+
+static void i2c_master_init(void)
+{
+    RCC->AHB1ENR |= RCC_AHB1ENR_GPIOBEN;
+    RCC->APB1ENR |= RCC_APB1ENR_I2C1EN;
+
+    GPIOB->MODER &= ~(GPIO_MODER_MODE6 | GPIO_MODER_MODE7);
+    GPIOB->MODER |= (0b10 << GPIO_MODER_MODE6_Pos) | (0b10 << GPIO_MODER_MODE7_Pos);
+
+    GPIOB->AFR[0] &= ~(GPIO_AFRL_AFSEL6 | GPIO_AFRL_AFSEL7);
+    GPIOB->AFR[0] |= (0x4 << GPIO_AFRL_AFSEL6_Pos) | (0x4 << GPIO_AFRL_AFSEL7_Pos);
+}
+
+static void i2c_slave_init(void)
+{
+
 }
 
 static void ipt_init(void)

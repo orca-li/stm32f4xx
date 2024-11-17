@@ -88,7 +88,7 @@ mkdir:
 	@mkdir -p ${DBGDIR}
 
 flash:
-	$(FLASH) -w $(basename $(BIN_PATH)).bin -v -g 0x0 $(port)
+	sudo $(FLASH) -w $(basename $(BIN_PATH)).bin -v -g 0x0 $(port)
 
 clean:
 	@rm -rf ${BUILD_DIR}
